@@ -1,0 +1,33 @@
+{
+  "name": "glass-component-library",
+  "version": "0.0.1",
+  "description": "Component Library",
+  "workspaces": [
+    "./packages/*"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run watch-stencil\" \"npm run dev-playground\" --kill-others",
+    "dev-rebuild": "npm run rebuild-components && concurrently \"npm run watch-stencil\" \"npm run dev-playground\" --kill-others",
+    "build-all": "npm run build-stencil && npm run build-react && npm run build-playground",
+    "build-stencil": "npm run build-clear --workspace=stencil-library",
+    "watch-stencil": "npm run watch --workspace=stencil-library",
+    "build-react": "npm run build --workspace=react-library",
+    "rebuild-components": "npm run build-stencil && npm run build-react",
+    "dev-playground": "npm run dev --workspace=playground",
+    "build-playground": "npm run build --workspace=playground",
+    "generate": "npm run generate --workspace=stencil-library"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.4.2",
+    "concurrently": "^8.2.0",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "clsx": "^2.0.0"
+  }
+}
